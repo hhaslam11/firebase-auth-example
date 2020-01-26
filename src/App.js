@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import firebase from 'firebase';
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -16,6 +17,16 @@ function App() {
 
   //firebase
   console.log(firebaseConfig);
+
+  //init app
+  firebase.initializeApp(firebaseConfig);
+
+  //init auth connection
+  const auth = firebase.auth();
+
+  //create new users with email and password
+  auth.createUserWithEmailAndPassword('testuser1@hotmail.com', 'password123');
+  auth.createUserWithEmailAndPassword('testuser2@gmail.com', 'hunter2');
 
   return (
     <div className="App">
